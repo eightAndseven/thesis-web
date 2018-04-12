@@ -1,0 +1,231 @@
+@font-face {
+    font-family: GSMT;
+    src: url("../src/Gill Sans MT.ttf");
+}
+
+body {
+  padding:0;
+  margin:0;
+  min-width:900px;
+  font-family:GSMT;
+}
+
+div#header {
+  height:45px;
+  width:100%;
+  background-color:#643c38;
+  position:fixed;
+  z-index:150;
+}
+
+div#header > form {
+  position:fixed;
+  right:50px;
+  top:10px;
+}
+div#header > form > input{
+  background-color:#efe1e0;
+  border:none;
+  padding:5px;
+  width:100px;
+  cursor:pointer;
+}
+
+div.container {
+  width:700px;
+  min-height:100%;
+  background-color:#f0e1e0;
+  position:relative;
+  margin:auto;
+}
+
+img#logo {
+  width:200px;
+  position:relative;
+  display:block;
+  margin:auto;
+  padding-top:70px;
+  padding-bottom:20px;
+}
+
+div.Username {
+  width:585px;
+  height:44px;
+  background-color:#9c382d;
+  display:inline-block;
+  color:white;
+  vertical-align:top;
+  line-height:13px;
+}
+div.UserContainer{
+  padding: 3px 0px;
+}
+div.Username > input {
+  display:inline-block;
+  font-size:15px;
+  padding-left:20px;
+  background-color:transparent;
+  border:none;
+  color:white;
+}
+
+button.deleteBttn {
+  width:52px;
+  border:none;
+  background-color:#9c382d;
+  display:inline-block;
+  cursor:pointer;
+}
+
+button.deleteBttn:active {
+  background-color:#cf9d97;
+}
+
+button.deleteBttn > img {
+  padding:6px;
+  width:30px;
+}
+
+button.edit {
+  width:52px;
+  border:none;
+  background-color:#9c382d;
+  cursor:pointer;
+}
+
+button.edit:active {
+  background-color:#cf9d97;
+}
+
+form.delete {
+  display:inline-block;
+}
+
+button.edit > img {
+  padding:6px;
+  width:30px;
+}
+
+button#addUserBttn {
+  font-family:GSMT;
+  border:none;
+  position:relative;
+  display:block;
+  margin:auto;
+  cursor:pointer;
+  font-size:20px;
+  background-color:#9c382d;
+  color:#efe1e0;
+  padding:7px;
+  width:200px;
+  border-radius:5px;
+  margin-top:40px;
+}
+
+button#addUser:active {
+  background-color:#cf9d97;
+}
+
+div#popBG {
+  position:fixed;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:300;
+  background-color:rgba(0,0,0,0.8);
+  display:none;
+}
+
+div#popBG > div#formCon {
+  width:650px;
+  height:400px;
+  background-color:white;
+  margin:auto;
+  margin-top:200px;
+}
+
+div#popBG > div#formCon > form {
+  width:60%;
+  margin:auto;
+  color:#9c382d;
+  padding-top:30px;
+}
+
+div#popBG > div#formCon > form > div {
+  font-size:30px;
+  text-align:center;
+  padding: 10px;
+}
+
+div#popBG > div#formCon > div#changePassword{
+  width:60%;
+  margin:auto;
+  color:#9c382d;
+  margin-top: 5px;
+}
+
+input.input {
+  width:100%;
+  height:30px;
+  padding-left:10px;
+  border: 3px solid #9c382d;
+  margin-bottom:14px;
+}
+
+input.editInput{
+  width:100%;
+  height:30px;
+  border: 3px solid #9c382d;
+  margin-bottom:14px;
+}
+input#editUsername.editInput{
+  width:100%;
+  height:30px;
+  border: 3px solid #9c382d;
+  margin-bottom:5px;
+}
+
+div.SCCon {
+  margin:auto;
+  width:260px;
+  margin-top:5px;
+}
+div#CPCon {
+  margin:auto;
+  width:200px;
+  margin-top:5px;
+}
+div.SCCon > input{
+  cursor: pointer;
+}
+
+input#submitBttn {
+  font-size:13px;
+  width:100px;
+  padding:5px;
+  color:#efe1e0;
+  background-color:#9c382d;
+  border:none;
+  border-radius:5px;
+  margin-right:50px;
+}
+
+input#cancelBttn {
+  font-size:13px;
+  width:100px;
+  padding:5px;
+  background-color:#c4c4c4;
+  border:none;
+  border-radius:5px;
+}
+
+input#btnchangePassword{
+  font-size:13px;
+  width:200px;
+  padding:5px;
+  background-color:#9c382d;
+  color:#efe1e0;
+  border:none;
+  border-radius:5px;
+  cursor: pointer;
+}

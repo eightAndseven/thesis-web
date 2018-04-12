@@ -1,0 +1,77 @@
+@font-face {
+    font-family: GSMT;
+    src: url("../src/Gill Sans MT.ttf");
+}
+
+body {
+  padding:0;
+  margin:0;
+  min-width:900px;
+}
+
+video {
+  position: fixed; right: 0; bottom: 0;
+  width: auto; height: auto; z-index: -100;
+  min-width: 110%; min-height: 110%;
+  background-size: cover;
+  left:-3%;
+}
+
+form {
+  width:400px;
+  position: relative;
+  display: block;
+  margin:auto;
+  text-align:center;
+}
+
+img {
+  width:50%;
+  position:relative;
+  display:block;
+  margin:auto;
+  padding-bottom:20px;
+}
+
+span {
+  font-family:GSMT;
+  color:white;
+  font-size:30px;
+}
+span.uservalidate{
+  font-family:GSMT;
+  color: red;
+  font-size: 20px;
+}
+
+.input {
+  width:100%;
+  padding:5px;
+  padding-left:10px;
+  font-size:13px;
+  font-family:GSMT;
+  border: 5px solid rgba(0,0,0,0.4);
+}
+
+#submit{
+  font-family:GSMT;
+  font-size:20px;
+  width:100%;
+  padding-top:8px;
+  padding-bottom:8px;
+  position:static;
+  color:white;
+  background-color:rgba(156,56,45,1);
+  border: none;
+}
+
+.container {
+  width:600px;
+  height:600px;
+  background-color:rgba(255,255,255,0.2);
+  border-radius: 300px;
+  position: relative;
+  display: block;
+  margin:auto;
+  border: 10px solid rgba(156,56,45,0.9);
+}
