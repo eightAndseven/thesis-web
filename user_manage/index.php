@@ -60,7 +60,7 @@
                 USERNAME:
                 <input class="input" id="addUsername" type="text" data-valid="false" name="username" required>
                 PASSWORD:
-                <input class="input" id="addPassword" type="text" name="password" required>
+                <input class="input" id="addPassword" type="password" name="password" required>
                 <div class="SCCon">
                     <input id="submitBttn" type="submit" value="CREATE">
                     <input id="cancelBttn" type="button" value="CANCEL" onclick="javascript:Cancel();">
@@ -84,7 +84,7 @@
             <!-- #EditUser -->
             <div id="changePassword">
                 CHANGE PASSWORD:
-                <input class="editInput" id="editPass" type="text" name="password" autocomplete="off" data-uid="">
+                <input class="editInput" id="editPass" type="password" name="password" autocomplete="off" data-uid="">
                 <div id="CPCon">
                     <input type="submit" id="btnchangePassword" value="CHANGE PASSWORD">
                 </div>
