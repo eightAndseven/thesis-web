@@ -75,6 +75,7 @@ button.deleteBttn {
   background-color:#9c382d;
   display:inline-block;
   cursor:pointer;
+  margin-left:5px;
 }
 
 button.deleteBttn:active {
@@ -91,6 +92,7 @@ button.edit {
   border:none;
   background-color:#9c382d;
   cursor:pointer;
+  margin-left:5px;
 }
 
 button.edit:active {
@@ -138,10 +140,10 @@ div#popBG {
 
 div#popBG > div#formCon {
   width:650px;
-  height:400px;
+  height:500px;
   background-color:white;
   margin:auto;
-  margin-top:200px;
+  margin-top:110px;
 }
 
 div#popBG > div#formCon > form {
@@ -177,6 +179,7 @@ input.editInput{
   height:30px;
   border: 3px solid #9c382d;
   margin-bottom:14px;
+  padding:5px;
 }
 input#editUsername.editInput{
   width:100%;

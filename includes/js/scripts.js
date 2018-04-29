@@ -21,9 +21,11 @@ $(document).ready( function() {
 
             $('#editName').val(jsondata.name);
             $('#editUsername').val(jsondata.username);
+            $('#editEmail').val(jsondata.email);
             $('#editId').val(jsondata.id);
             $('#editName').attr('data-init', jsondata.name);
             $('#editUsername').attr('data-init', jsondata.username);
+            $('#editEmail').attr('data-init', jsondata.email);
         });
 
     });
@@ -78,9 +80,11 @@ $(document).ready( function() {
         var name = $('#addName').val();
         var username = $('#addUsername').val();
         var password  = $('#addPassword').val();
+        var email = $('#editEmail').val();
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         var special_user = specialValid(username);
         var user_passEqual = isEqualValue(username, password);
-        if(user_passEqual && name.length > 4 && username.length > 4 && password.length > 4 && name.length < 50 && username.length < 50 && password.length < 50 && special_user){
+        if(user_passEqual && name.length > 4 && username.length > 4 && password.length > 4 && name.length < 50 && username.length < 50 && password.length < 50 && !email.match(mailformat) && special_user){
             var user_valid = $('#addUsername').attr('data-valid');
             if(user_valid === 'true'){
                 //username is unique
@@ -109,6 +113,9 @@ $(document).ready( function() {
             if(password.length <= 4 || password.length >= 50){
                 error = error + "Password must not be less than 4 characters";
             }
+            if(email.match(mailformat)){
+                error = error + "You have entered an invalid email address";
+            }
             alert(error);
             return false;
         }
@@ -121,20 +128,23 @@ $(document).ready( function() {
     $('#EditUser').submit(function(e){
         var name = $('#editName').val();
         var username = $('#editUsername').val();
+        var email = $('#editEmail').val();
         var special_user = specialValid(username);
-        var user_passEqual = isEqualValue(username, password);
-        if(user_passEqual && name.length > 4 && username.length > 4 && name.length < 50 && username.length < 50 && special_user){
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(name.length > 4 && username.length > 4 && name.length < 50 && username.length < 50 && email.match(mailformat) && special_user){
             var user_valid = $('#editUsername').attr('data-valid');
             var init_name = $('#editName').attr('data-init');
             var init_user = $('#editUsername').attr('data-init');
+            var init_email = $('#editEmail').attr('data-init');
             if(user_valid === 'true'){
                 //username is unique
-                if(init_name === name && init_user === username){
+                if(init_name === name && init_user === usernam && init_email === email){
                     //Input does not change
                     alert('No information were changed.');
                     return false;
                 }else{
                     //Input changes
+                    alert('changes saved');
                     return true;
                 }
             }else{
@@ -145,9 +155,6 @@ $(document).ready( function() {
         }else{
             //one of the inputs are either less than 4 or 50 in length
             var error = "";
-            if(!user_passEqual){
-                error = error + "Username and Password must not match \n"
-            }
             if(name.length <= 4 || name.length >= 50){
                 error = error + "Name must not be less than 4 characters \n";
             }
@@ -157,10 +164,14 @@ $(document).ready( function() {
             if(username.length <= 4 || username.length >= 50){
                 error = error + "Username must not be less than 4 characters";
             }
+            if(!email.match(mailformat)){
+                error = error + "You have entered an invalid email address";
+            }
             alert(error);
             return false;
         }
     });
+
     /**
      * Jquery function when admin change its password
      */
@@ -197,7 +208,7 @@ function validateEditUser(force){
         if(jsondata.validate == "true"){
             //if username is unique
             $('#editUsername').attr('data-valid', 'true');
-        }else{ 
+        }else{
             //if username is taken
             $('#editUsername').attr('data-valid', 'false');
         }
@@ -212,7 +223,7 @@ function validateAddUser(force){
     var val = $('#addUsername').val();
     if(!force && val.length < 1 ) return;
     var url = 'crud_user_validation.php?username='+val;
-    
+
     $.get(url, function(data){
         var jsondata = JSON.parse(data);
         if(jsondata.validate == "true"){
@@ -239,7 +250,7 @@ function showAdd() {
     form2.style.display = "none";
     con.style.display = "block";
 }
-/** 
+/**
  * Function call to cancel block display and clear input contents
 */
 function Cancel(){
@@ -257,14 +268,14 @@ function Cancel(){
 }
 
 /**
- * function to check if value has a special character 
+ * function to check if value has a special character
  */
 function specialValid(val){
     if( /[^a-zA-Z0-9\-\/]/.test(val)) {
         // alert('Input is not alphanumeric');
         return false;
     }
-    return true; 
+    return true;
 }
 function isEqualValue(val1, val2){
     if(val1 === val2){

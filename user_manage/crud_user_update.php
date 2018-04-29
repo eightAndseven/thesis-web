@@ -14,12 +14,13 @@ switch($method){
         /**
          * Update User information
          */
-        if(isset($_POST['id']) and isset($_POST['name']) and isset($_POST['username'])){
+        if(isset($_POST['id']) and isset($_POST['name']) and isset($_POST['username']) and isset($_POST['email'])){
             $id = $_POST['id'];
             $name = $_POST['name'];
             $username = $_POST['username'];
+            $email = $_POST['email'];
 
-            if((strlen($name) > 4 && strlen($name) < 50) && (strlen($username) > 4 && strlen($username) < 50)){
+            if((strlen($name) > 4 && strlen($name) < 50) && (strlen($username) > 4 && strlen($username) < 50) && filter_var($email, FILTER_VALIDATE_EMAIL)){
                 /**
                  * valide username
                  */
@@ -29,14 +30,14 @@ switch($method){
                 if($count_username >= 1){
                     //if user has duplicate username
                     header('Location: /adminweb/user_manage/?edit_user=ERROR');
-                    exit(); 
+                    exit();
                 }else{
                     //if user has unique username
-                    $sql = "UPDATE user_table SET username='$username', name='$name' WHERE id=$id";
+                    $sql = "UPDATE user_table SET username='$username', name='$name', email='$email' WHERE id=$id";
                     if(mysqli_query($connection, $sql)){
                         header('Location: /adminweb/user_manage/?edit_user=successful');
                         exit();
-                    }else{ 
+                    }else{
                         echo "Error " . mysqli_error($connection);
                     }
 
@@ -45,7 +46,7 @@ switch($method){
                 header('Location: /adminweb/user_manage/?edit_user=error_validation');
                 exit();
             }
-            
+
 
         }else{
 
@@ -64,7 +65,7 @@ switch($method){
                 $sql = "UPDATE user_table SET password='$hashed_password' WHERE id=$id";
                 if(mysqli_query($connection, $sql)){
                     echo 'Change password successful!';
-                }else{ 
+                }else{
                     echo "Error " . mysqli_error($connection);
                 }
             }else{
@@ -74,7 +75,7 @@ switch($method){
         }else{
             echo 'PUT: Nothing here';
         }
-        
+
         break;
     case 'DELETE':
         /**
@@ -89,7 +90,7 @@ switch($method){
             }else{
                 echo "Error " . mysqli_error($connection);
             }
-            
+
         }else{
             //do something
             echo 'Nothing to say';

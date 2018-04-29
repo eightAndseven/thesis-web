@@ -31,8 +31,8 @@
              * loop to get rows from result query
              */
             while($row = $user_result->fetch_assoc()){
-                echo '<div class="UserContainer"><div class="UserName"><br><input id="user-'. $row['ID'] .'" class="userNameVal" name="username" value="'. $row['NAME'] .'"></div>'.
-                '<button id="update-'. $row['ID'] .'" class="edit" onclick="javascript:showEdit(this);"><img src="../includes/src/edit.png"></button>'.
+                echo '<div class="UserContainer"><div class="UserName"><br><input id="user-'. $row['ID'] .'" class="userNameVal" name="username" value="'. $row['NAME'] .'" disabled></div>'.
+                '<button id="update-'. $row['ID'] .'" class="edit"><img src="../includes/src/edit.png"></button>'.
                 '<button id="delete-'. $row['ID'] .'" class="deleteBttn" type="submit"><img src="../includes/src/delete.png"></button>'.
                 '</div>';
             }
@@ -40,7 +40,7 @@
         </div>
         <!-- #WholeUserContainer -->
 
-        <?php 
+        <?php
             //check if user is user is greater or equal to 5
             if($user_count >= 5){
                 //do something
@@ -59,6 +59,8 @@
                 <input class="input" id="addName" type="text" name="name" required>
                 USERNAME:
                 <input class="input" id="addUsername" type="text" data-valid="false" name="username" required>
+                EMAIL:
+                <input class="input" id="addEmail" type="text" data-valid="false" name="email" required>
                 PASSWORD:
                 <input class="input" id="addPassword" type="password" name="password" required>
                 <div class="SCCon">
@@ -75,6 +77,8 @@
                 <input class="editInput" id="editName" type="text" name="name" required>
                 USERNAME:
                 <input class="editInput" id="editUsername" type="text" data-valid="true" name="username" required>
+                EMAIL:
+                <input class="editInput" id="editEmail" type="text" data-valid="true" name="email" required>
                 <div class="SCCon">
                     <input id="submitBttn" type="submit" value="UPDATE">
                     <input id="cancelBttn" type="button" value="CANCEL" onclick="javascript:Cancel();">
@@ -82,7 +86,7 @@
                 <!-- .SCCon -->
             </form>
             <!-- #EditUser -->
-            <div id="changePassword">
+            <div id="changePassword" style="margin-top:25;">
                 CHANGE PASSWORD:
                 <input class="editInput" id="editPass" type="password" name="password" autocomplete="off" data-uid="">
                 <div id="CPCon">
@@ -95,7 +99,7 @@
                 <input class="editInput" id="editPass" type="password" name="password" required>
                 CONFIRM PASSWORD:
                 <input class="editInput" id="editPass" type="password" name="password" required>
-                
+
                 <div class="SCCon">
                     <input id="submitBttn" type="submit" value="UPDATE">
                     <input id="cancelBttn" type="button" value="CANCEL" onclick="javascript:Cancel();">

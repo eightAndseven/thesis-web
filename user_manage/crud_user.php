@@ -13,29 +13,30 @@ switch($method){
          */
         if(isset($_GET['id'])){
             $id = $_GET['id'];
-            $query = "SELECT DISTINCT id, name, username FROM user_table where id='$id'";
+            $query = "SELECT DISTINCT id, name, username, email FROM user_table where id='$id'";
             $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
             $data = $result->fetch_assoc();
             echo json_encode($data);
         }else{
-            //do something   
+            //do something
         }
-        
+
         break;
     case 'POST':
 
         /**
          * POST from index.php #addUser
          */
-        if(isset($_POST['name']) and isset($_POST['username']) and isset($_POST['password'])){
+        if(isset($_POST['name']) and isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email'])){
             $name = $_POST['name'];
             $username = $_POST['username'];
             $password = $_POST['password'];
+            $email = $_POST['email'];
 
             /**
-             * validation form 
+             * validation form
              */
-            if((strlen($name) > 4 && strlen($name) < 50) && (strlen($username) > 4 && strlen($username) < 50) && (strlen($password) > 4 && strlen($password) < 50)){
+            if((strlen($name) > 4 && strlen($name) < 50) && (strlen($username) > 4 && strlen($username) < 50) && (strlen($password) > 4 && strlen($password) < 50) && filter_var($email, FILTER_VALIDATE_EMAIL)){
                 /**
                  * Validation for username
                  */
@@ -45,13 +46,13 @@ switch($method){
                 if($count_username >= 1){
                     //if user has duplicate username
                     header('Location: /adminweb/user_manage/?add_user=ERROR');
-                    exit(); 
+                    exit();
                 }else{
                     //if user has unique username
-                    
+
                     //hashes password and save to database
                     $hashed_password = crypt($password, $salt_key);
-                    $sql = "INSERT INTO user_table (name, username, password) VALUES ('$name', '$username', '$hashed_password')";
+                    $sql = "INSERT INTO user_table (name, username, password, email) VALUES ('$name', '$username', '$hashed_password', '$email')";
                     if(mysqli_query($connection, $sql)){
                         header('Location: /adminweb/user_manage/?crud_user=addedsuccessfully');
                         exit();
@@ -63,7 +64,7 @@ switch($method){
                 header('Location: /adminweb/user_manage/?crud_user=Error_validation');
                 exit();
             }
-            
+
         }else{
             header('Location: /adminweb/user_manage/?crud_user=POST_ERROR');
             exit();

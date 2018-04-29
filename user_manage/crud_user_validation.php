@@ -32,7 +32,7 @@ switch($method){
             $user = $_GET['username'];
             $query = "SELECT DISTINCT USERNAME FROM user_table where USERNAME='$user'";
             $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
-            
+
             $count = mysqli_num_rows($result);
             if($count == 1){
                 //have same username
@@ -51,7 +51,7 @@ switch($method){
             header('Location: /adminweb/user_manage/?crud_user_validation=GET_ERROR');
             exit();
         }
-        
+
         break;
     case 'POST':
         //do something
