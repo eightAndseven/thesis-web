@@ -133,6 +133,7 @@ div#popBG {
   top:0;
   width:100%;
   height:100%;
+  min-height:700px;
   z-index:300;
   background-color:rgba(0,0,0,0.8);
   display:none;
@@ -140,7 +141,7 @@ div#popBG {
 
 div#popBG > div#formCon {
   width:650px;
-  height:500px;
+  height:auto;
   background-color:white;
   margin:auto;
   margin-top:110px;
@@ -164,6 +165,7 @@ div#popBG > div#formCon > div#changePassword{
   margin:auto;
   color:#9c382d;
   margin-top: 5px;
+  padding-bottom:30px;
 }
 
 input.input {
@@ -232,3 +234,10 @@ input#btnchangePassword{
   border-radius:5px;
   cursor: pointer;
 }
+div#changePassword > span {
+   font-size:12px;
+ }
+
+ div#formCon > form > span {
+   font-size:12px;
+ }

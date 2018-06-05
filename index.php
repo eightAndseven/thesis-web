@@ -50,6 +50,10 @@
     </form>
   </div>
 
+  <noscript>
+    <h1>Pleas enable javascript to view the website.</h1>
+  </noscript>
+
     <script src="includes/js/jquery-3.3.1.min.js"></script>
     <script src="includes/js/script.js"></script>
 </body>

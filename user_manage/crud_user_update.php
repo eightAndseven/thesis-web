@@ -5,6 +5,7 @@ require_once(__DIR__."/../php_include/db_connect.php");
 
 $method = $_SERVER["REQUEST_METHOD"];
 
+$_SESSION['last_login_timestamp'] = time();
 //switch case to get HTTP method
 switch($method){
     case 'GET':
@@ -25,22 +26,24 @@ switch($method){
                  * valide username
                  */
                 $query_username = "SELECT DISTINCT USERNAME FROM user_table WHERE id!=$id and username='$username'";
+                $query_email = "SELECT DISTINCT EMAIL FROM user_table WHERE id!=$id and email='$email'";
                 $result_username = mysqli_query($connection, $query_username) or die(mysqli_error($connection));
+                $result_email = mysqli_query($connection, $query_email) or die(mysqli_error($connection));
                 $count_username = mysqli_num_rows($result_username);
-                if($count_username >= 1){
-                    //if user has duplicate username
-                    header('Location: /adminweb/user_manage/?edit_user=ERROR');
-                    exit();
+                $count_email = mysqli_num_rows($result_email);
+                if($count_username < 1 && $count_email < 1 ){
+                  //if user has unique username
+                  $sql = "UPDATE user_table SET username='$username', name='$name', email='$email' WHERE id=$id";
+                  if(mysqli_query($connection, $sql)){
+                      header('Location: /adminweb/user_manage/?edit_user=successful');
+                      exit();
+                  }else{
+                      echo "Error " . mysqli_error($connection);
+                  }
                 }else{
-                    //if user has unique username
-                    $sql = "UPDATE user_table SET username='$username', name='$name', email='$email' WHERE id=$id";
-                    if(mysqli_query($connection, $sql)){
-                        header('Location: /adminweb/user_manage/?edit_user=successful');
-                        exit();
-                    }else{
-                        echo "Error " . mysqli_error($connection);
-                    }
-
+                  //if user has duplicate username
+                  header('Location: /adminweb/user_manage/?edit_user=ERROR');
+                  exit();
                 }
             }else{
                 header('Location: /adminweb/user_manage/?edit_user=error_validation');

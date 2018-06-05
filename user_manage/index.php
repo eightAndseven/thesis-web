@@ -8,14 +8,13 @@
     $user_result = mysqli_query($connection, $query) or die(mysqli_error($connection));
     $user_count = mysqli_num_rows($user_result);
 ?>
-
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../includes/css/main.css">
     </head>
 <body>
     <div id="header">
-        <form action="logout.php" method="POST"><input type="hidden" name="logout" value="logout">
+        <form id="logoutUser" action="logout.php" method="POST"><input type="hidden" name="logout" value="logout">
             <input type="submit" value="LOGOUT"/>
         </form>
     </div>
@@ -63,6 +62,9 @@
                 <input class="input" id="addEmail" type="text" data-valid="false" name="email" required>
                 PASSWORD:
                 <input class="input" id="addPassword" type="password" name="password" required>
+                CONFIRM PASSWORD:
+                <input class="input" id="confirmAddPassword" type="password" name="cpassword" required>
+                <input id="addShowPass" type="checkbox"/> <span>SHOW PASSWORD</span>
                 <div class="SCCon">
                     <input id="submitBttn" type="submit" value="CREATE">
                     <input id="cancelBttn" type="button" value="CANCEL" onclick="javascript:Cancel();">
@@ -87,8 +89,11 @@
             </form>
             <!-- #EditUser -->
             <div id="changePassword" style="margin-top:25;">
-                CHANGE PASSWORD:
+                PASSWORD:
                 <input class="editInput" id="editPass" type="password" name="password" autocomplete="off" data-uid="">
+                CONFIRM PASSWORD:
+                <input class="editInput" id="cPass" type="password" name="password" autocomplete="off" data-uid="">
+                <input id="editShowPass" type="checkbox"> <span>SHOW PASSWORD</span>
                 <div id="CPCon">
                     <input type="submit" id="btnchangePassword" value="CHANGE PASSWORD">
                 </div>
@@ -110,6 +115,10 @@
         <!-- #formCon -->
     </div>
     <!-- #popBG -->
+
+    <noscript>
+      <h1>Pleas enable javascript to view the website.</h1>
+    </noscript>
 
     <!--scripts for javascript-->
     <script src="../includes/js/jquery-3.3.1.min.js"></script>

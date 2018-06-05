@@ -19,6 +19,7 @@
             $count = mysqli_num_rows($result);
             if($count == 1){
                 $_SESSION['admin'] = $username;
+                $_SESSION['last_login_timestamp'] = time();
                 header("Location: /adminweb/user_manage");
                 exit();
             }else{
