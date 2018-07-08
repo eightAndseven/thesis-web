@@ -6,7 +6,7 @@
     if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
         //echo 'yes session';
         $_time = time() - $_SESSION['last_login_timestamp'];
-        if($_time > 60){
+        if($_time > 900){
           header("Location: /adminweb/?session=EXPIRED");
           session_destroy();
           exit();
