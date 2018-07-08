@@ -305,7 +305,7 @@ setTimeout(function(){
   for (i = 0; i < 4; i++) {
       setTimeout(location.reload(), 2000);
   }
-}, 61000);
+}, 901000);
 
 /*
     Function to call in validating input username in Edit form
